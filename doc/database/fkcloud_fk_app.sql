@@ -1,0 +1,3 @@
+insert into fkcloud.fk_app (id, name, version, tags, remark, create_time, icon, size, cmd, default_port) values ('f991c20cb508', 'mysql', 'latest', 'latest', '基于MySql server 8.x版本，如果希望navcat连接需要设置密码方式', '2018-12-03 08:33:38', '../../../../assets/img/mysql.jpeg', 1024000, null, 3306);
+insert into fkcloud.fk_app (id, name, version, tags, remark, create_time, icon, size, cmd, default_port) values (123, 'nginx', 'latest', 'latest', 'Nginx通用网路服务器', '2018-12-04 07:53:31', null, 2400000, null, 80);
+insert into fkcloud.fk_app (id, name, version, tags, remark, create_time, icon, size, cmd, default_port) values ('5958914cc558', 'redis', 'latest', 'latest', 'Redis是一款高性能缓存组件，性能优化，支持分布式', '2018-12-03 11:53:53', '../../../../assets/img/redis.jpeg', 430000, null, 6379);

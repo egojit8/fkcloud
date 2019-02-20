@@ -1,0 +1,66 @@
+version: '3'
+services:
+  zookeeper:
+    image: zookeeper:latest
+    ports:
+    - 2181:2181
+    container_name: fkcloud-zookeeper
+    restart: always
+    networks:
+      fkcloudnet:
+        aliases:
+        - fkcloud-zk
+  zkui:
+    image: 127.0.0.1:5000/zkui:2.0
+    ports:
+    - 9090:9090
+    container_name: fkcloud-zkui
+    restart: always
+    volumes:
+      - ~/fkcloud/docker/zkui/config.cfg:/var/app/config.cfg
+    networks:
+      fkcloudnet:
+        aliases:
+        - fkcloud-zkui
+  registry:
+    image: registry:latest
+    ports:
+    - 5000:5000
+    container_name: fkcloud-registry
+    volumes:
+      - ~/fkcloud/docker/registry:/var/lib/registry
+    restart: always
+    networks:
+      fkcloudnet:
+        aliases:
+        - fkcloud-registry
+  fkcloud:
+    image: 127.0.0.1:5000/fkcloud:1.0
+    ports:
+    - 8080:8080
+    container_name: fkcloud-app
+    volumes:
+    - ~/fkcloud/application.properties:/var/app/application.properties
+    restart: always
+    networks:
+      fkcloudnet:
+        aliases:
+        - fkcloud-app
+  mysql:
+    image: mysql:latest
+    ports:
+    - 3306:3306
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=egojit123
+    container_name: fkcloud-mysql
+    volumes:
+      - ~/fkcloud/mysql:/etc/mysql
+      - ~/fkcloud/mysql/data:/var/lib/mysql
+      - ~/fkcloud/mysql/mysql-files:/var/lib/mysql-files
+    networks:
+      fkcloudnet:
+        aliases:
+        - fkcloud-mysql
+networks:
+  fkcloudnet:

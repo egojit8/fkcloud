@@ -1,0 +1,17 @@
+<assembly>
+    <id>fkcloud-cp</id>
+    <formats>
+        <format>dir</format><!--打包的文件格式,也可以有：war zip-->
+        <format>zip</format>
+    </formats>
+    <!--tar.gz压缩包下是否生成和项目名相同的根目录-->
+    <fileSets>
+        <fileSet>
+            <directory>target</directory>
+            <outputDirectory>../doc/fkcloud/</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
